@@ -27,4 +27,8 @@ public class ProductoEntity {
 
     @Column(name = "precio")
     private String precio;
+
+    /*@ManyToOne
+    @JoinColumn(name = "idSucursal", referencedColumnName = "id")
+    private SucursalEntity sucursalEntity;*/
 }

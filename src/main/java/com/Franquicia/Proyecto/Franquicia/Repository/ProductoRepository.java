@@ -11,10 +11,8 @@ import org.springframework.transaction.annotation.Transactional;
 @Repository
 
 public interface ProductoRepository extends JpaRepository<ProductoEntity, Long> {
-
-
-    @Modifying
     @Transactional
+    @Modifying
     @Query(value = "INSERT INTO franquicia.producto " +
             "(nombre, cantidad, precio, idSucursal) " +
             "VALUES (:nombre, :cantidad, :precio, " +
@@ -26,5 +24,13 @@ public interface ProductoRepository extends JpaRepository<ProductoEntity, Long> 
                         @Param("nitSucursal")Long nitSucursal
 
     );
+
+    @Transactional
+    @Modifying
+    @Query(value = "DELETE FROM franquicia.producto WHERE id = :id AND idSucursal = :idSucursal", nativeQuery = true)
+    int eliminarProductoDeSucursal(@Param("id") Long id, @Param("idSucursal") Long idSucursal);
 }
+
+
+
 

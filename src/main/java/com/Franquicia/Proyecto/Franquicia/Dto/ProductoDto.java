@@ -14,12 +14,15 @@ public class ProductoDto {
     private String cantidad;
     private String precio;
     private Long nitSucursal;
+    //private  Long productoId;
+    //private Long sucursalId;
 
 
-    public ProductoDto(String nombre, String cantidad, String precio, Long nitSucursal) {
-        this.nombre = nombre;
+    public ProductoDto(String nombre, String cantidad, String precio, Long nitSucursal){
         this.cantidad = cantidad;
         this.precio = precio;
         this.nitSucursal = nitSucursal;
+        //this.productoId = productoId;
+        //this.sucursalId = sucursalId;
     }
 }
