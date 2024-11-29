@@ -3,6 +3,7 @@ package com.Franquicia.Proyecto.Franquicia.Service;
 import com.Franquicia.Proyecto.Franquicia.Repository.FranquiciaRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 @Service
 
@@ -20,11 +21,9 @@ public class FranquiciaService {
                                   String ciudad,
                                   String representanteLegal,
                                   String actividadEconomica) {
-
         if (nit == null || nit<=0) {
             throw new IllegalArgumentException("El NIT no puede estar vacío");
         }
-
 
         if (nombre == null || nombre.isEmpty()) {
             throw new IllegalArgumentException("El nombre no puede estar vacío");
@@ -41,8 +40,15 @@ public class FranquiciaService {
         if (actividadEconomica == null || actividadEconomica.isEmpty()) {
             throw new IllegalArgumentException("La actividad económica no puede estar vacía");
         }
-
-
         franquiciaRepository.guardarFranquicia(nit,nombre,direccion,ciudad,representanteLegal,actividadEconomica);
+    }
+
+    @Transactional
+    public  String actualizarNombreFranquicia (String nombreActual, String nuevoNombre){
+        int filasActualizas = franquiciaRepository.actualizarFranquicia(nuevoNombre, nombreActual);
+        if (filasActualizas == 0){
+            throw new IllegalArgumentException("No se encontro una franquicia con el nombre proporcionado.");
+        }
+        return "nombre la franquicia actualizado correctamente.";
     }
 }

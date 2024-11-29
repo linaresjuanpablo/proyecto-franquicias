@@ -1,13 +1,12 @@
 package com.Franquicia.Proyecto.Franquicia.Controller;
 
+import com.Franquicia.Proyecto.Franquicia.Dto.FranquiciaActualizarDto;
 import com.Franquicia.Proyecto.Franquicia.Dto.FranquiciaDto;
 import com.Franquicia.Proyecto.Franquicia.Service.FranquiciaService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.Locale;
 
@@ -34,4 +33,19 @@ public class FranquiciaController {
         );
         return ResponseEntity.ok("Franquicia guardada con exito");
     }
+
+    @PutMapping("/renovar")
+    public ResponseEntity<String> actualizarNombreFranquicia(@RequestBody FranquiciaActualizarDto request){
+        try {
+            String respuesta = franquiciaService.actualizarNombreFranquicia(
+                    request.getNombreActual(),
+                    request.getNuevoNombre()
+            );
+            return ResponseEntity.ok(respuesta);
+        } catch (IllegalArgumentException e){
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(e.getMessage());
+        }
+    }
+
+
 }

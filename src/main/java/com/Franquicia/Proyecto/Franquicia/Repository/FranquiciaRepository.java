@@ -24,4 +24,10 @@ public interface FranquiciaRepository extends JpaRepository<FranquiciaEntity, Lo
                            @Param("ciudad")String ciudad,
                            @Param("representanteLegal")String representanteLegal,
                            @Param("actividadEconomica")String actividadEconomica);
+
+   @Transactional
+    @Modifying
+    @Query(value = "UPDATE franquicia.franquicia SET nombreFranquicia = :nuevoNombre WHERE nombreFranquicia = :nombreActual ",
+    nativeQuery = true)
+    int actualizarFranquicia(@Param("nuevoNombre")String nuevoNombre, @Param("nombreActual") String nombreActual);
 }
