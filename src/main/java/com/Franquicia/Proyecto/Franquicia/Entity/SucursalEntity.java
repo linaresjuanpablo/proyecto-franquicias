@@ -16,8 +16,8 @@ public class SucursalEntity {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(name = "nombre")
-    private String nombre;
+    @Column(name = "nombreSucursal")
+    private String nombreSucursal;
 
     @Column(name = "nitSucursal")
     private Integer nitSucursal;

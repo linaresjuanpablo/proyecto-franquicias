@@ -14,8 +14,7 @@ public class ProductoDto {
     private String cantidad;
     private String precio;
     private Long nitSucursal;
-    //private  Long productoId;
-    //private Long sucursalId;
+
 
 
     public ProductoDto(String nombre, String cantidad, String precio, Long nitSucursal){

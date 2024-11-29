@@ -20,8 +20,8 @@ public class FranquiciaEntity {
     @Column(name = "nit")
     private String nit;
 
-    @Column(name = "nombre")
-    private String nombre;
+    @Column(name = "nombreFranquicia")
+    private String nombreFranquicia;
 
     @Column(name = "direccion")
     private String direccion;
